@@ -1,0 +1,229 @@
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+    }
+    
+    .nav {
+        gap: 20px;
+    }
+    
+    .nav-link {
+        font-size: 14px;
+    }
+    
+    .contact-btn {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+    
+    .content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 20px;
+        text-align: center;
+    }
+    
+    .name {
+        font-size: 48px;
+    }
+    
+    .greeting {
+        font-size: 20px;
+    }
+    
+    .role {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .name {
+        font-size: 36px;
+    }
+    
+    .greeting {
+        font-size: 18px;
+    }
+    
+    .role {
+        font-size: 16px;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+
+/* Responsive Design for Portfolio */
+@media (max-width: 768px) {
+    .portfolio {
+        padding: 60px 20px;
+    }
+    
+    .portfolio-header h1 {
+        font-size: 36px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .project-card {
+        height: 350px;
+    }
+    
+    .card-front, .card-back {
+        padding: 20px;
+    }
+    
+    .project-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .project-link {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-header h1 {
+        font-size: 28px;
+    }
+    
+    .portfolio-header p {
+        font-size: 16px;
+    }
+    
+    .project-card {
+        height: 320px;
+    }
+    
+    .project-image {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 20px;
+    }
+    
+    .project-image ion-icon {
+        font-size: 36px;
+    }
+    
+    .card-front h3, .card-back h3 {
+        font-size: 20px;
+    }
+}
+
+
+/* Responsive Design for Contact */
+@media (max-width: 768px) {
+    .contact {
+        padding: 60px 20px;
+        
+    }
+    
+    .contact-header h1 {
+        font-size: 36px;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .contact-form {
+        padding: 30px 20px;
+    }
+    
+    .info-card {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-header h1 {
+        font-size: 28px;
+    }
+    
+    .contact-header p {
+        font-size: 16px;
+    }
+    
+    .contact-form {
+        padding: 25px 15px;
+    }
+    
+    .form-group {
+        margin-bottom: 25px;
+    }
+    
+    .submit-btn {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+
+/* Responsive Design for Footer */
+@media (max-width: 968px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        
+    }
+    
+    .footer-about {
+        grid-column: 1 / -1;
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 60px 20px 20px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .footer-about {
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+    
+    .footer-social {
+        justify-content: center;
+    }
+    .footer-contact {
+        justify-items: center;
+    }
+    
+    
+}
+
+@media (max-width: 480px) {
+    .footer-about h3 {
+        font-size: 24px;
+    }
+    
+    .footer-about p {
+        font-size: 14px;
+    }
+    
+    .footer-links h4,
+    .footer-contact h4 {
+        font-size: 18px;
+    }
+    
+    .contact-item {
+        font-size: 14px;
+    }
+    
+}
