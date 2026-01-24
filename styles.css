@@ -729,6 +729,8 @@ h2 {
     grid-template-columns: 2fr 1fr 1fr 1.5fr;
     gap: 50px;
     margin-bottom: 50px;
+    position: relative;
+    z-index: 2;
 }
 
 .footer-about {
