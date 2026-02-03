@@ -1,0 +1,15 @@
+{
+  "name": "zaks-portfolio",
+  "version": "1.0.0",
+  "description": "Zak Knudson's Portfolio Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["portfolio", "website"],
+  "author": "Zak Knudson",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
