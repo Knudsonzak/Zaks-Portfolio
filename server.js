@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const { Resend } = require('resend');
 require('dotenv').config();
 
 const app = express();
@@ -13,29 +12,41 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files
 app.use(express.static(path.join(__dirname)));
 
-// Initialize Resend
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // Contact form endpoint
 app.post('/send-email', async (req, res) => {
     const { name, email, subject, message } = req.body;
 
     try {
-        await resend.emails.send({
-            from: 'onboarding@resend.dev', // Resend's test email
-            to: process.env.EMAIL_USER,
-            replyTo: email,
-            subject: `Portfolio Contact: ${subject}`,
-            html: `
-                <h2>New Contact Form Submission</h2>
-                <p><strong>From:</strong> ${name}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Subject:</strong> ${subject}</p>
-                <h3>Message:</h3>
-                <p>${message}</p>
-            `
+        const response = await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                from: 'onboarding@resend.dev',
+                to: process.env.EMAIL_USER,
+                reply_to: email,
+                subject: `Portfolio Contact: ${subject}`,
+                html: `
+                    <h2>New Contact Form Submission</h2>
+                    <p><strong>From:</strong> ${name}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Subject:</strong> ${subject}</p>
+                    <h3>Message:</h3>
+                    <p>${message}</p>
+                `
+            })
         });
-        res.json({ success: true, message: 'Email sent successfully!' });
+
+        const data = await response.json();
+        
+        if (response.ok) {
+            res.json({ success: true, message: 'Email sent successfully!' });
+        } else {
+            console.error('Resend API error:', data);
+            res.status(500).json({ success: false, message: 'Failed to send email. Please try again later.' });
+        }
     } catch (error) {
         console.error('Error sending email:', error);
         res.status(500).json({ success: false, message: 'Failed to send email. Please try again later.' });
