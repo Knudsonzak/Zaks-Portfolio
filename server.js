@@ -23,8 +23,10 @@ const transporter = nodemailer.createTransport({
         pass: process.env.EMAIL_PASS
     },
     tls: {
-        rejectUnauthorized: false
-    }
+        rejectUnauthorized: true
+    },
+    logger: true, // Enable logging
+    debug: true // Include debug info
 });
 
 // Contact form endpoint
