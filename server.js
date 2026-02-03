@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 require('dotenv').config();
 
 const app = express();
@@ -13,40 +13,28 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files
 app.use(express.static(path.join(__dirname)));
 
-// Configure nodemailer transporter
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true, // true for 465, false for other ports
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    },
-    logger: true, // Enable logging
-    debug: true // Include debug info
-});
+// Initialize Resend
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Contact form endpoint
 app.post('/send-email', async (req, res) => {
     const { name, email, subject, message } = req.body;
 
-    const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER, // Send to yourself
-        replyTo: email, // Allow you to reply to the sender
-        subject: `Portfolio Contact: ${subject}`,
-        html: `
-            <h2>New Contact Form Submission</h2>
-            <p><strong>From:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Subject:</strong> ${subject}</p>
-            <h3>Message:</h3>
-            <p>${message}</p>
-        `
-    };
-
     try {
-        await transporter.sendMail(mailOptions);
+        await resend.emails.send({
+            from: 'onboarding@resend.dev', // Resend's test email
+            to: process.env.EMAIL_USER,
+            replyTo: email,
+            subject: `Portfolio Contact: ${subject}`,
+            html: `
+                <h2>New Contact Form Submission</h2>
+                <p><strong>From:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Subject:</strong> ${subject}</p>
+                <h3>Message:</h3>
+                <p>${message}</p>
+            `
+        });
         res.json({ success: true, message: 'Email sent successfully!' });
     } catch (error) {
         console.error('Error sending email:', error);
