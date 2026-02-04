@@ -305,7 +305,8 @@ h2 {
     cursor: pointer;
 }
 
-.project-card:hover .card-inner {
+.project-card:hover .card-inner,
+.project-card.flipped .card-inner {
     transform: rotateY(180deg);
 }
 

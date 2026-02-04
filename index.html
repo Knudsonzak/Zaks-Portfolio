@@ -377,6 +377,14 @@
                     }, 3000);
                 }
             });
+            
+            // Make project cards work on touchscreen devices
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    // Toggle flipped state
+                    this.classList.toggle('flipped');
+                });
+            });
         </script>
     </body>
 </html>
