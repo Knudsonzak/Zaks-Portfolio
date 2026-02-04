@@ -380,9 +380,29 @@
             
             // Make project cards work on touchscreen devices
             document.querySelectorAll('.project-card').forEach(card => {
-                card.addEventListener('click', function() {
+                let isFlipped = false;
+                
+                card.addEventListener('click', function(e) {
+                    // Don't flip if clicking on a link
+                    if (e.target.tagName === 'A' || e.target.closest('a')) {
+                        return;
+                    }
+                    
                     // Toggle flipped state
-                    this.classList.toggle('flipped');
+                    isFlipped = !isFlipped;
+                    if (isFlipped) {
+                        this.classList.add('flipped');
+                    } else {
+                        this.classList.remove('flipped');
+                    }
+                });
+                
+                // Optional: flip back when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!card.contains(e.target) && isFlipped) {
+                        isFlipped = false;
+                        card.classList.remove('flipped');
+                    }
                 });
             });
         </script>
