@@ -92,18 +92,6 @@ npm start
 http://localhost:3000
 ```
 
-## 🌐 Deployment
-
-This portfolio is deployed on [Render](https://render.com). To deploy your own:
-
-1. Push your code to GitHub
-2. Create a new Web Service on Render
-3. Connect your GitHub repository
-4. Add environment variables in Render:
-   - `EMAIL_USER`: Your email address
-   - `RESEND_API_KEY`: Your Resend API key
-5. Deploy!
-
 ## 📱 Sections
 
 ### Home
@@ -127,7 +115,7 @@ This portfolio is deployed on [Render](https://render.com). To deploy your own:
 - **Personal Website**: Responsive portfolio (HTML/CSS)
 - **Matrix Calculator**: Functional calculator in JavaScript ([View on GitHub](https://github.com/Knudsonzak/Matrix_calculator))
 - **Flappy Bird Game**: Interactive Java game ([View on GitHub](https://github.com/Knudsonzak/Flappy-Bird))
-- **Ambrosia**: Restaurant website with modern design ([View Live](https://ambrosia-zxd3.onrender.com/index.html) | [View on GitHub](https://github.com/Knudsonzak/120-Final-Project))
+- **Ambrosia**: Restaurant website with modern design ([View on GitHub](https://github.com/Knudsonzak/120-Final-Project))
 
 ### Contact
 - Email: zakknudson6@gmail.com
